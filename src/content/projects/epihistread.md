@@ -7,6 +7,7 @@ category: { en: "Digital humanities · Visual reading", zh: "数字人文 · 可
 period: "2026"
 order: 2
 featured: true
+note: { en: "Accepted as a poster at CCF AI4Humanity 2026", zh: "CCF AI4Humanity 2026 Poster 接收" }
 screenshot:
   src: /images/projects/epihistread.png
   width: 1280

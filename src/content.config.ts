@@ -22,7 +22,7 @@ const projects = defineCollection({
       height: z.number().int().positive(),
       alt: bilingual,
       caption: bilingual,
-      source: z.url({ protocol: /^https$/ }),
+      source: z.url({ protocol: /^https$/ }).optional(),
     }).optional(),
   }),
 });

@@ -48,7 +48,7 @@ featured: false
 - `order` 控制升序排列；`featured: true` 放入精选区，其他项目放入精简列表。
 - `role` 和 `note` 为可选双语字段，用于个人贡献及有依据的成果记录。
 - `code` 仅填写公开 GitHub 仓库的完整 HTTPS 地址；没有公开源码时省略此字段。
-- `screenshot` 可选：将真实截图放在 `public/images/projects/`，填写 `src`（如 `/images/projects/example.png`）、原图 `width` / `height`、双语 `alt` / `caption` 和公开来源 `source`。图片按原比例展示，点击可查看原图；没有可公开截图的项目省略此字段。
+- `screenshot` 可选：将真实截图放在 `public/images/projects/`，填写 `src`（如 `/images/projects/example.png`）、原图 `width` / `height`、双语 `alt` / `caption`。有公开演示时填写 `source`，本地项目截图可省略。图片按原比例展示，点击可查看原图；优先横向核心界面，避免截成长页或拉伸图像。
 - 双语必填字段由 Astro 内容集合校验。新增项目需同时填写中英文。
 - 页面配色和布局在 `src/styles/global.css`。项目采用文字条目，介绍用途、个人贡献与成果状态。
 
@@ -70,11 +70,14 @@ gh api --method PUT repos/YuIcy/YuIcy.github.io/pages -f build_type=workflow
 
 ## 内容边界
 
-个人身份和教育以 2026 年简历为主；早期项目参考 2024 年简历。公开页面仅使用照片与学校邮箱，不存放原简历或手机号。私有项目仅展示概述，不发布源码、内部截图、数据或未公开论文。成果状态按材料原文表述；团队项目只列有材料支持的个人贡献。
+项目介绍与配图优先以现有项目、实际运行界面和仓库材料为依据；缺失的信息再从简历补充。身份、教育及个人贡献保留有材料支持的事实。公开页面使用照片与学校邮箱，不存放原简历或手机号。按用户要求展示 Family Memory、Inscription Evolution 的真实项目截图；截图展示不等于公开私有源码、原始数据或未公开论文。成果状态按材料原文表述。
 
 网站代码和内容更新不影响独立项目仓库提供的 `/EpiHistRead-page/` 站点。
 
 ## 项目截图来源
+
+- `family-memory.jpg`：从本地 Family Memory 实际页面截取源氏墓志阅读视图，1600×900。
+- `inscription-evolution.jpg`：采用项目 `docs/visual-review/2026-08-01-detail-group-workbench/after.png` 中的实际界面记录，1811×888，按实际 JPEG 编码保存扩展名；属于该版本界面记录，不标作最新版本。
 
 - `epihistread.png`：2026-09-12 截取公开 `EpiHistRead-page` 的 `gh-pages` 分支原样构建产物（本地镜像），展示上官婉儿对读页。
 - `conference-schedule.png`：2026-09-12 运行公开 `conference-schedule-viewer` 的 `examples/demo.json`，截取紧凑日程界面。使用虚构示例数据，不代表真实会议记录。
