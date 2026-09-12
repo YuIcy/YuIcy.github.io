@@ -7,4 +7,11 @@ category: { en: "Digital humanities · Visual reading", zh: "数字人文 · 可
 period: "2026"
 order: 2
 featured: true
+screenshot:
+  src: /images/projects/epihistread.png
+  width: 1280
+  height: 720
+  alt: { en: "EpiHistRead showing Shangguan Wan'er's epitaph beside related historical accounts", zh: "EpiHistRead 中上官婉儿墓志与相关史料的并排对读界面" }
+  caption: { en: "Shangguan Wan'er · Public demo", zh: "上官婉儿墓志与史料对读 · 公开演示" }
+  source: https://yuicy.github.io/EpiHistRead-page/
 ---

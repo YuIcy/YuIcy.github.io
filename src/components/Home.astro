@@ -79,6 +79,10 @@ const description = profile.bio[locale];
                 <p class="project-meta">{p.period} · {p.category[locale]}</p>
               </div>
               <div class="project-description">
+                {p.screenshot && <figure class="project-screenshot">
+                  <a href={p.screenshot.src} aria-label={t('View full screenshot: ', '查看完整截图：') + p.title[locale]}><img src={p.screenshot.src} width={p.screenshot.width} height={p.screenshot.height} alt={p.screenshot.alt[locale]} loading="lazy" decoding="async" /></a>
+                  <figcaption><a href={p.screenshot.source}>{p.screenshot.caption[locale]}</a></figcaption>
+                </figure>}
                 <p>{p.summary[locale]}</p>
                 {p.role && <p class="project-role"><strong>{t('My contribution: ', '个人贡献：')}</strong>{p.role[locale]}</p>}
                 {p.note && <p class="project-note">{p.note[locale]}</p>}
@@ -94,6 +98,10 @@ const description = profile.bio[locale];
               <span class="other-period">{p.period}</span>
               <div>
                 <h4>{p.code ? <a href={p.code}>{p.title[locale]}</a> : p.title[locale]}</h4>
+                {p.screenshot && <figure class="project-screenshot">
+                  <a href={p.screenshot.src} aria-label={t('View full screenshot: ', '查看完整截图：') + p.title[locale]}><img src={p.screenshot.src} width={p.screenshot.width} height={p.screenshot.height} alt={p.screenshot.alt[locale]} loading="lazy" decoding="async" /></a>
+                  <figcaption><a href={p.screenshot.source}>{p.screenshot.caption[locale]}</a></figcaption>
+                </figure>}
                 <p>{p.summary[locale]}</p>
                 {p.role && <p class="project-role">{p.role[locale]}</p>}
               </div>

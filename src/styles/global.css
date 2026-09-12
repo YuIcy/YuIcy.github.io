@@ -46,6 +46,11 @@ h1 { font: 46px/1.2 var(--serif); letter-spacing: -.025em; display: flex; align-
 .project h3 { font: 22px/1.4 var(--serif); }
 .project-meta { margin-top: 9px; color: var(--muted); font-size: 12px; line-height: 1.8; }
 .project-description > p { font-size: 15px; line-height: 1.85; }
+.project-screenshot { margin: 0 0 16px; }
+.project-screenshot img { width: 100%; height: auto; border: 1px solid var(--line); }
+.project-screenshot figcaption { margin-top: 6px; font-size: 12px; line-height: 1.6; }
+.project-screenshot figcaption a { color: var(--muted); }
+.other-project .project-screenshot { margin-top: 12px; }
 .project-description .project-role { margin-top: 10px; font-size: 14px; color: var(--muted); }
 .project-note { margin-top: 10px; color: var(--accent); }
 .code-link { display: inline-block; margin-top: 10px; font-size: 14px; }

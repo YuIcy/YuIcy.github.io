@@ -16,6 +16,14 @@ const projects = defineCollection({
     order: z.number().int(),
     featured: z.boolean(),
     code: z.url({ protocol: /^https$/, hostname: /^github\.com$/ }).optional(),
+    screenshot: z.object({
+      src: z.string().startsWith('/images/projects/'),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+      alt: bilingual,
+      caption: bilingual,
+      source: z.url({ protocol: /^https$/ }),
+    }).optional(),
   }),
 });
 
