@@ -5,8 +5,6 @@ summary:
   zh: "将单个人物的墓志与传世史料放在一起阅读的可视化原型，支持比较不同文献对同一人生的记述。"
 category: { en: "Digital humanities · Visual reading", zh: "数字人文 · 可视化阅读" }
 period: "2026"
-tags: [{ en: "Text comparison", zh: "文本对读" }, "Vue.js", "TypeScript"]
 order: 2
 featured: true
-art: reading
 ---

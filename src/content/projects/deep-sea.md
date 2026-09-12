@@ -8,7 +8,6 @@ role:
   zh: "负责标注进度与样本分布总览界面的设计实现，参与交互式修正流程的讨论设计。"
 category: { en: "Visual analytics", zh: "可视分析" }
 period: "2025 — 2026"
-tags: ["Annotation", "Human-in-the-loop"]
 order: 5
 featured: false
 ---

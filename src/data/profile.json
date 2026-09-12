@@ -3,20 +3,14 @@
   "email": "xinhao@stu.pku.edu.cn",
   "github": "https://github.com/YuIcy",
   "affiliation": { "en": "Ph.D. student · Peking University", "zh": "北京大学 · 博士研究生" },
-  "school": { "en": "School of Intelligence Science and Technology", "zh": "智能学院" },
-  "intro": {
-    "en": "I explore how visualization can help us read historical evidence, understand complex relationships, and ask better questions.",
-    "zh": "我关注如何通过可视化阅读历史证据、理解复杂关系，并提出更好的问题。"
-  },
   "bio": {
-    "en": "I am a Ph.D. student at Peking University, advised by Xiaoru Yuan. My work connects visualization and visual analytics with digital humanities, through interactive systems for exploring documents, cultural heritage, and spatiotemporal data.",
-    "zh": "我是北京大学智能学院的博士研究生，导师为袁晓如研究员。我的研究围绕可视化与可视分析展开，结合数字人文中的实际问题，构建用于探索历史文献、文化遗产与时空数据的交互式系统。"
+    "en": "I am a Ph.D. student in the School of Intelligence Science and Technology at Peking University, advised by Xiaoru Yuan. My research focuses on visualization and visual analytics, particularly for historical documents and cultural heritage.",
+    "zh": "我是北京大学智能学院的博士研究生，导师为袁晓如研究员，研究方向为可视化与可视分析。我主要关注历史文献与文化遗产中的比较、对读和关系探索。"
   },
-  "interests": [
-    { "title": { "en": "Historical evidence", "zh": "历史证据" }, "text": { "en": "Reading across sources, versions, and the traces left in cultural artifacts.", "zh": "在不同史料、版本与文物留下的痕迹之间展开对读。" } },
-    { "title": { "en": "Connected perspectives", "zh": "关联视角" }, "text": { "en": "Exploring the relationships between people, places, and moments in time.", "zh": "探索人物、地点与时间之间的联系，让复杂关系变得可读。" } },
-    { "title": { "en": "Interactive inquiry", "zh": "交互式探究" }, "text": { "en": "Building visual tools that support exploration, comparison, and human interpretation.", "zh": "构建支持探索、比较与人工解释的可视化工具。" } }
-  ],
+  "research": {
+    "en": "My current projects include comparing different versions of stone rubbings and reading epitaphs alongside historical texts. I also build practical tools, including a viewer for parallel conference schedules.",
+    "zh": "近期的项目包括碑刻拓片版本比较，以及墓志与传世史料对读。我也开发一些实用工具，例如用于浏览并行议程的会议日程查看器。"
+  },
   "education": [
     { "period": "2025.09 —", "degree": { "en": "Ph.D. student", "zh": "博士研究生" }, "institution": { "en": "Peking University", "zh": "北京大学" }, "detail": { "en": "School of Intelligence Science and Technology · Advisor: Xiaoru Yuan", "zh": "智能学院 · 导师：袁晓如研究员" } },
     { "period": "2021.09 — 2025.07", "degree": { "en": "Undergraduate studies", "zh": "本科学习" }, "institution": { "en": "Peking University", "zh": "北京大学" }, "detail": { "en": "School of Electronics Engineering and Computer Science · Intelligence Science and Technology", "zh": "信息科学技术学院 · 智能科学与技术专业" } }

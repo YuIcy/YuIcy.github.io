@@ -13,10 +13,8 @@ const projects = defineCollection({
     note: bilingual.optional(),
     category: bilingual,
     period: z.string().min(1),
-    tags: z.array(z.union([z.string().min(1), bilingual])),
     order: z.number().int(),
     featured: z.boolean(),
-    art: z.enum(['rubbings', 'reading', 'family', 'schedule']).optional(),
     code: z.url({ protocol: /^https$/, hostname: /^github\.com$/ }).optional(),
   }),
 });

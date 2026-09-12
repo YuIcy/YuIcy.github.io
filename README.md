@@ -24,9 +24,9 @@ npm run preview
 
 ## 更新个人资料
 
-修改 `src/data/profile.json`，包括姓名、邮箱、介绍、研究兴趣、教育经历与工具。双语文字分别填写 `en` 和 `zh`，共用同一套页面模板。
+修改 `src/data/profile.json`，包括姓名、邮箱、个人介绍（`bio`）、近期工作（`research`）、教育经历与工具。双语文字分别填写 `en` 和 `zh`，共用同一套页面模板。
 
-替换 `public/images/xin-hao.jpg` 可更换照片。当前原图比例为 780:1080；若使用其他比例，同步调整 `src/components/Home.astro` 中图片尺寸及 CSS 的 `aspect-ratio`。
+替换 `public/images/xin-hao.jpg` 可更换照片。当前原图尺寸为 780×1080；若更换不同尺寸的照片，同步调整 `src/components/Home.astro` 中图片的 `width` 和 `height`，页面会按比例显示。
 
 ## 新增或修改项目
 
@@ -40,7 +40,6 @@ summary:
   zh: "简短、准确的项目介绍。"
 category: { en: "Visualization", zh: "可视化" }
 period: "2026"
-tags: ["Vue.js", "D3.js"]
 order: 9
 featured: false
 ---
@@ -48,11 +47,9 @@ featured: false
 
 - `order` 控制升序排列；`featured: true` 放入精选区，其他项目放入精简列表。
 - `role` 和 `note` 为可选双语字段，用于个人贡献及有依据的成果记录。
-- `tags` 中技术名称可直接写字符串；需要翻译的标签使用 `{ en: "Networks", zh: "关系网络" }`。
-- `art` 为可选示意图类型：`rubbings`、`reading`、`family`、`schedule`。这些是主题示意，不代表真实数据或系统截图。
 - `code` 仅填写公开 GitHub 仓库的完整 HTTPS 地址；没有公开源码时省略此字段。
 - 双语必填字段由 Astro 内容集合校验。新增项目需同时填写中英文。
-- 页面配色和布局在 `src/styles/global.css`；项目示意图在 `src/components/ProjectArt.astro`。
+- 页面配色和布局在 `src/styles/global.css`。项目采用文字条目，介绍用途、个人贡献与成果状态。
 
 可以在 GitHub 网页直接编辑内容文件并提交，也可以本地修改后提交。无需运行内容管理服务。
 
@@ -72,6 +69,6 @@ gh api --method PUT repos/YuIcy/YuIcy.github.io/pages -f build_type=workflow
 
 ## 内容边界
 
-个人身份和教育以 2026 年简历为主；早期项目参考 2024 年简历。公开页面仅使用照片与学校邮箱，不存放原简历或手机号。私有项目仅展示概述与主题示意，不发布源码、内部截图、数据或未公开论文。成果状态按材料原文表述；团队项目只列有材料支持的个人贡献。
+个人身份和教育以 2026 年简历为主；早期项目参考 2024 年简历。公开页面仅使用照片与学校邮箱，不存放原简历或手机号。私有项目仅展示概述，不发布源码、内部截图、数据或未公开论文。成果状态按材料原文表述；团队项目只列有材料支持的个人贡献。
 
 网站代码和内容更新不影响独立项目仓库提供的 `/EpiHistRead-page/` 站点。

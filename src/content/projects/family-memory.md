@@ -9,8 +9,6 @@ role:
 note: { en: "Accepted as a poster at CCF AI4Humanity 2025", zh: "CCF AI4Humanity 2025 Poster 接收" }
 category: { en: "Digital humanities · Relationships", zh: "数字人文 · 关系探索" }
 period: "2025"
-tags: [{ en: "Epitaphs", zh: "墓志" }, { en: "Networks", zh: "关系网络" }, "Vue.js"]
 order: 3
 featured: true
-art: family
 ---

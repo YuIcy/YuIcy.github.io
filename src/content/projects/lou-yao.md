@@ -8,7 +8,6 @@ role:
   zh: "负责地图视图开发与南宋版图投影参数拟合，参与交游网络可视化原型设计。"
 category: { en: "Digital humanities", zh: "数字人文" }
 period: "2024"
-tags: ["Maps", "Spatiotemporal data"]
 order: 6
 featured: false
 ---
