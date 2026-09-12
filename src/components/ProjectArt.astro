@@ -1,0 +1,63 @@
+---
+interface Props { kind: 'rubbings' | 'reading' | 'family' | 'schedule' }
+const { kind } = Astro.props;
+---
+<div class:list={['project-art', `art-${kind}`]} aria-hidden="true">
+  <svg viewBox="0 0 560 300" fill="none" focusable="false">
+    {kind === 'rubbings' && <>
+      <path d="M42 253H518M62 45V263M494 45V263" stroke="currentColor" opacity=".12"/>
+      {[0,1,2].map((i) => <g transform={`translate(${99+i*125} ${44+i*13})`}>
+        <rect width="116" height="194" rx="2" fill={i === 2 ? '#ede1c9' : '#f6efdf'} stroke="#9e8d70"/>
+        <rect x="10" y="10" width="96" height="174" fill="#363b35"/>
+        {[0,1,2,3].map((col) => [0,1,2,3,4,5,6].map((row) => <g stroke="#dbd3ba" opacity={.42+(row%3)*.18} transform={`translate(${24+col*21} ${25+row*22})`}>
+          <path d="M-5 -5H5M-6 0H6M0 -7V7M-5 5L5 -4"/>
+        </g>))}
+        <path d={`M${28+i*16} 10L${39+i*11} 54L${29+i*16} 85L${43+i*9} 125L${34+i*13} 184`} stroke="#f6efdf" stroke-width={2+i}/>
+        <rect x="50" y="71" width="28" height="29" stroke="#bd6045" stroke-width="2"/>
+      </g>)}
+      <path d="M177 128L274 142M303 142L399 154" stroke="#a44732" stroke-dasharray="4 4"/>
+      <circle cx="65" cy="253" r="4" fill="#a44732"/><circle cx="493" cy="253" r="4" fill="#a44732"/>
+    </>}
+    {kind === 'reading' && <>
+      <rect x="75" y="42" width="166" height="218" rx="2" fill="#fbf8ef" stroke="#c5b9a4"/>
+      <rect x="319" y="42" width="166" height="218" rx="2" fill="#fbf8ef" stroke="#c5b9a4"/>
+      <path d="M98 65H167M342 65H416" stroke="#4b5148" stroke-width="4"/>
+      {[0,1,2,3,4,5,6,7,8,9].map(i=><>
+        <path d={`M98 ${89+i*14}H${i%3===0?197:219}`} stroke="#b8b2a1" stroke-width="3"/>
+        <path d={`M342 ${89+i*14}H${i%4===0?427:462}`} stroke="#b8b2a1" stroke-width="3"/>
+      </>)}
+      <rect x="93" y="111" width="132" height="24" fill="#b98a53" opacity=".23"/>
+      <rect x="337" y="153" width="131" height="24" fill="#a44732" opacity=".2"/>
+      <path d="M225 123C280 123 280 165 337 165" stroke="#a44732" stroke-width="1.5"/>
+      <path d="M225 191C283 191 275 95 337 95" stroke="#8d9a84" stroke-width="1.5"/>
+      <circle cx="280" cy="145" r="13" fill="#eee6d6" stroke="#a44732"/>
+      <path d="M275 145H285M280 140V150" stroke="#a44732"/>
+    </>}
+    {kind === 'family' && <>
+      <path d="M280 61V112M156 155V112H404V155M156 178V210M88 248V210H224V248M404 178V210M344 248V210H464V248" stroke="#9ca38e" stroke-width="1.5"/>
+      <path d="M156 112H280V61" stroke="#a44732" stroke-width="2"/>
+      {[[280,61],[156,165],[404,165],[88,247],[224,247],[344,247],[464,247]].map(([x,y],i)=><g>
+        <circle cx={x} cy={y} r={i===0?26:18} fill={i===0?'#a44732':'#f8f4e9'} stroke={i===0?'#a44732':'#88937f'} stroke-width="1.5"/>
+        <circle cx={x} cy={y-4} r={i===0?6:4} fill={i===0?'#f8f4e9':'#88937f'}/>
+        <path d={`M${x-8} ${y+10}Q${x-8} ${y} ${x} ${y}Q${x+8} ${y} ${x+8} ${y+10}`} fill={i===0?'#f8f4e9':'#88937f'}/>
+      </g>)}
+      <rect x="327" y="33" width="119" height="56" rx="2" fill="#fbf8ef" stroke="#c7bea9"/>
+      <path d="M340 49H394M340 60H431M340 71H416" stroke="#bab39f" stroke-width="3"/>
+      <path d="M306 61H327" stroke="#a44732" stroke-dasharray="3 3"/>
+    </>}
+    {kind === 'schedule' && <>
+      <rect x="79" y="37" width="402" height="227" rx="3" fill="#faf8f1" stroke="#c9c0ad"/>
+      <path d="M79 74H481M120 74V264M241 74V264M360 74V264" stroke="#d8d0c0"/>
+      {[0,1,2,3,4].map(i=><path d={`M89 ${96+i*35}H109M120 ${112+i*35}H481`} stroke="#d8d0c0"/>)}
+      <path d="M96 55H169M137 58H195M261 58H320M382 58H442" stroke="#868e7c" stroke-width="4"/>
+      <rect x="129" y="84" width="222" height="45" rx="2" fill="#a44732"/>
+      <rect x="369" y="84" width="103" height="79" rx="2" fill="#d9c6a6"/>
+      <rect x="129" y="137" width="103" height="66" rx="2" fill="#dce0d2"/>
+      <rect x="249" y="137" width="102" height="66" rx="2" fill="#e6d5bd"/>
+      <rect x="369" y="172" width="103" height="31" rx="2" fill="#dce0d2"/>
+      <rect x="129" y="211" width="343" height="42" rx="2" fill="#e7e1d3"/>
+      <path d="M141 99H250M141 111H204" stroke="#f4dfcf" stroke-width="3"/>
+      <path d="M381 99H442M381 111H430M141 153H204M261 153H326M141 225H279M141 237H239" stroke="#7f836f" stroke-width="3" opacity=".65"/>
+    </>}
+  </svg>
+</div>

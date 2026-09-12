@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import profile from '../data/profile.json';
+import ProjectArt from './ProjectArt.astro';
+import '../styles/global.css';
+
+interface Props { locale: 'en' | 'zh' }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const t = (en: string, cn: string) => zh ? cn : en;
+const projects = (await getCollection('projects')).sort((a,b) => a.data.order-b.data.order);
+const featured = projects.filter(p => p.data.featured);
+const other = projects.filter(p => !p.data.featured);
+const canonical = new URL(zh ? '/zh/' : '/', Astro.site);
+const title = t('Xin Hao — Visualization & Digital Humanities', '郝昕 — 可视化与数字人文');
+const description = profile.bio[locale];
+---
+<!doctype html>
+<html lang={zh ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f5ed" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL('/', Astro.site)} />
+    <link rel="alternate" hreflang="zh-CN" href={new URL('/zh/', Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/social-card.png', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={zh ? 'zh_CN' : 'en_US'} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t('Skip to content', '跳转到正文')}</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href={zh ? '/zh/' : '/'} aria-label={t('Xin Hao, home', '郝昕，首页')}><span class="seal">昕</span> <span>Xin Hao<span class="wordmark-dot">.</span></span></a>
+      <nav class="desktop-nav" aria-label={t('Main navigation', '主导航')}>
+        <a href="#about">{t('About', '关于')}</a><a href="#work">{t('Selected work', '精选项目')}</a><a href="#background">{t('Background', '个人经历')}</a><a href="#contact">{t('Contact', '联系')}</a>
+      </nav>
+      <div class="header-actions">
+        <a class="language-link" href={zh ? '/' : '/zh/'} lang={zh ? 'en' : 'zh-CN'} aria-label={t('切换到中文', 'Switch to English')}>{t('中文', 'EN')} <span aria-hidden="true">↗</span></a>
+        <details class="mobile-nav">
+          <summary aria-label={t('Navigation menu', '导航菜单')}><span></span><span></span></summary>
+          <nav aria-label={t('Mobile navigation', '移动端导航')}><a href="#about">{t('About', '关于')}</a><a href="#work">{t('Selected work', '精选项目')}</a><a href="#background">{t('Background', '个人经历')}</a><a href="#contact">{t('Contact', '联系')}</a></nav>
+        </details>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="tiny-square"></span>{profile.affiliation[locale]}</p>
+          <h1 id="hero-title">{profile.name[locale]}<span class="name-secondary">{zh ? 'Xin Hao' : '郝昕'}</span></h1>
+          <p class="hero-statement">{zh ? <>在历史与数据之间，<br/>寻找<span class="ink-emphasis">新的视角。</span></> : <>Finding perspectives<br/>between <em>history & data.</em></>}</p>
+          <p class="hero-intro">{profile.intro[locale]}</p>
+          <div class="hero-links"><a class="primary-link" href="#work">{t('Explore my work', '浏览我的项目')} <span aria-hidden="true">↘</span></a><a class="quiet-link" href={`mailto:${profile.email}`}>{t('Get in touch', '与我联系')} <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="portrait-composition">
+          <div class="portrait-top"><span>PEKING UNIVERSITY</span><span>北京大学</span></div>
+          <div class="portrait-frame"><img src="/images/xin-hao.jpg" width="780" height="1080" alt={t('Portrait of Xin Hao', '郝昕的个人照片')} fetchpriority="high"/><span class="portrait-corner" aria-hidden="true">昕</span></div>
+          <div class="portrait-bottom"><span>{t('Visualization & visual analytics', '可视化与可视分析')}</span><span aria-hidden="true">01 / XH</span></div>
+          <div class="portrait-orbit" aria-hidden="true"><svg viewBox="0 0 160 130" fill="none"><path d="M12 102L51 29L106 58L147 12M12 102L99 115L106 58L51 29" stroke="currentColor"/><circle cx="12" cy="102" r="4" fill="currentColor"/><circle cx="51" cy="29" r="6" fill="currentColor"/><circle cx="106" cy="58" r="4" fill="currentColor"/><circle cx="99" cy="115" r="4" fill="currentColor"/><circle cx="147" cy="12" r="4" fill="currentColor"/></svg></div>
+        </div>
+        <div class="hero-baseline"><span>{t('VISUALIZATION / DIGITAL HUMANITIES / INTERACTIVE SYSTEMS', '可视化 / 数字人文 / 交互式系统')}</span><a href="#about" aria-label={t('Read about my research', '了解我的研究')}><span aria-hidden="true">↓</span></a></div>
+      </section>
+      <section id="about" class="about section wrap" aria-labelledby="about-title">
+        <div class="section-label"><span>01</span><h2 id="about-title">{t('A little context', '关于我')}</h2></div>
+        <div class="about-content"><p class="about-lead">{profile.bio[locale]}</p>
+          <div class="interests">{profile.interests.map((item,i) => <div class="interest"><span class="interest-mark" aria-hidden="true">{['≋','⋈','⌘'][i]}</span><h3>{item.title[locale]}</h3><p>{item.text[locale]}</p></div>)}</div>
+        </div>
+      </section>
+      <section id="work" class="section work-section wrap" aria-labelledby="work-title">
+        <div class="section-heading"><div><p class="eyebrow">02 / {t('SELECTED WORK', '精选项目')}</p><h2 id="work-title">{t('Questions, made explorable.', '让问题，变得可探索。')}</h2></div><p class="section-aside">{t('Research prototypes and useful tools,\nbuilt around real questions.', '从真实问题出发，\n构建研究原型与实用工具。')}</p></div>
+        <div class="project-grid">{featured.map(({id,data:p},i) => <article class="project" id={`project-${id}`}>
+          {p.art && <ProjectArt kind={p.art}/>}
+          <div class="project-meta"><span>{p.category[locale]}</span><span>{p.period}</span></div>
+          <h3>{p.title[locale]}</h3><p class="project-summary">{p.summary[locale]}</p>
+          {p.role && <p class="project-role"><span>{t('My contribution', '个人贡献')}</span>{p.role[locale]}</p>}
+          {p.note && <p class="project-note"><span aria-hidden="true">↳</span> {p.note[locale]}</p>}
+          <div class="project-foot"><div class="tags">{p.tags.map(tag=><span>{typeof tag === 'string' ? tag : tag[locale]}</span>)}</div>{p.code && <a class="code-link" href={p.code} aria-label={t(`View ${p.title.en} on GitHub`, `在 GitHub 查看${p.title.zh}`)}>GitHub ↗</a>}</div>
+          <span class="project-index" aria-hidden="true">0{i+1}</span>
+        </article>)}</div>
+        <div class="other-heading"><h3>{t('More explorations', '更多探索')}</h3><span>{t('A few other things I have worked on', '我参与过的其他项目')}</span></div>
+        <div class="other-projects">{other.map(({data:p})=><article class="other-project"><span class="other-period">{p.period}</span><div><h4>{p.title[locale]}</h4><p>{p.summary[locale]}</p>{p.role && <p class="other-role">{p.role[locale]}</p>}</div>{p.code ? <a href={p.code} aria-label={t(`View ${p.title.en} on GitHub`, `在 GitHub 查看${p.title.zh}`)}>↗</a> : <span class="other-category">{p.category[locale]}</span>}</article>)}</div>
+      </section>
+      <section id="background" class="section background wrap" aria-labelledby="background-title">
+        <div class="section-label"><span>03</span><h2 id="background-title">{t('Along the way', '学习与积累')}</h2></div>
+        <div class="background-content"><h3 class="small-heading">{t('EDUCATION', '教育背景')}</h3><div class="education">{profile.education.map(item=><article class="education-item"><span class="education-period">{item.period}</span><div><h4>{item.institution[locale]}<span>{item.degree[locale]}</span></h4><p>{item.detail[locale]}</p></div></article>)}</div><div class="toolbox"><h3 class="small-heading">{t('TOOLS I WORK WITH', '常用工具')}</h3><p>{profile.skills.map(skill=><span>{skill}</span>)}</p></div></div>
+      </section>
+      <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap"><p class="eyebrow">04 / {t('LET’S CONNECT', '保持联系')}</p><div class="contact-main"><h2 id="contact-title">{t('Good questions start', '好的问题，')}<br/><em>{t('with a conversation.', '从交流开始。')}</em></h2><a class="contact-arrow" href={`mailto:${profile.email}`} aria-label={t('Email Xin Hao', '发送邮件给郝昕')}>↗</a></div><div class="contact-links"><a href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a><a href={profile.github}>GitHub <span aria-hidden="true">↗</span></a></div></div></section>
+    </main>
+    <footer class="footer wrap"><span>© {new Date().getFullYear()} {profile.name[locale]}</span><span>{t('Made with curiosity. Built for the web.', '保持好奇，持续探索。')}</span><a href="#hero-title">{t('Back to top', '回到顶部')} ↑</a></footer>
+    <script>
+      document.querySelectorAll<HTMLAnchorElement>('.language-link').forEach(link => {
+        const base = link.getAttribute('href')!;
+        link.addEventListener('click', () => {
+          const section = [...document.querySelectorAll<HTMLElement>('main > section[id]')]
+            .reverse().find(section => section.getBoundingClientRect().top <= window.innerHeight / 3);
+          link.href = base + (section ? '#' + section.id : '');
+        });
+      });
+      document.querySelectorAll<HTMLAnchorElement>('.mobile-nav a').forEach(link => {
+        link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'));
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          const menu = document.querySelector<HTMLDetailsElement>('.mobile-nav[open]');
+          menu?.removeAttribute('open');
+          menu?.querySelector('summary')?.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
